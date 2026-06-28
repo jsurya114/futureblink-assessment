@@ -4,7 +4,7 @@ import {
   AppDistribution,
   shopifyApp,
 } from "@shopify/shopify-app-react-router/server";
-import { MongoDBSessionStorage } from "@shopify/shopify-app-session-storage-mongodb";
+import { SQLiteSessionStorage } from "@shopify/shopify-app-session-storage-sqlite";
 
 const shopify = shopifyApp({
   apiKey: process.env.SHOPIFY_API_KEY,
@@ -13,10 +13,7 @@ const shopify = shopifyApp({
   scopes: process.env.SCOPES?.split(","),
   appUrl: process.env.SHOPIFY_APP_URL || "",
   authPathPrefix: "/auth",
-  sessionStorage: new MongoDBSessionStorage(
-    new URL(process.env.MONGODB_URI),
-    "futureblink"
-  ),
+  sessionStorage: new SQLiteSessionStorage("sessions.sqlite"),
   distribution: AppDistribution.AppStore,
   future: {
     expiringOfflineAccessTokens: true,
