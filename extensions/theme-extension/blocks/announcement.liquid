@@ -1,0 +1,18 @@
+<div style="
+  background-color: #ff6b35;
+  color: white;
+  text-align: center;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+">
+  {{ shop.metafields.my_app.announcement.value }}
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Banner",
+  "target": "section"
+}
+{% endschema %}
